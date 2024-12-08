@@ -1,3 +1,15 @@
-node_modules
-package-lock.json
+# Node.js dependencies
+node_modules/
+
+# Environment files
 .env
+
+# Log files
+*.log
+
+# Optional: Ignore build directories for frontend (e.g., React build)
+frontend/dist/
+
+# Optional: Ignore any OS or editor-specific files
+.DS_Store
+.vscode/
