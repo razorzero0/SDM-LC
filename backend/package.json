@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "test": "jest --runInBand --detectOpenHandles --forceExit",
-        "dev": "node server.js",
+        "dev": "nodemon --legacy-watch server.js",
         "start": "node server.js",
         "refresh:db": "node app/scripts/refreshDatabase.js",
         "test user": "jest app/test/user.test.js ",

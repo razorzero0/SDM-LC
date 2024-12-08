@@ -10,7 +10,7 @@ const leaveRequestRouter = require("./routes/leaveRequest.Routes");
 // CORS digunakan untuk mengizinkan komunikasi antara frontend dan backend
 app.use(
     cors({
-        origin: process.env.FRONTEND_URI, // Izinkan hanya dari frontend yang berjalan di localhost:3000
+        origin: process.env.FRONTEND_URI, // Izinkan hanya dari frontend yang berjalan
         methods: "GET,POST,PUT,DELETE", // Hanya metode HTTP ini yang diizinkan
         credentials: true, // Mengizinkan pengiriman cookie bersama dengan request
     })
@@ -30,7 +30,9 @@ connectDb();
 app.use("/api/user", userRouter); // Rute untuk operasi terkait user (signup, login, dll.)
 app.use("/api/request", leaveRequestRouter); // Rute untuk operasi terkait permintaan cuti
 
-app.get("/", (res) => {
+// Perbaikan route root
+app.get("/", (req, res) => {
+    // Perbaikan pada parameter callback function
     res.send("Hello World!");
 });
 

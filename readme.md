@@ -37,30 +37,76 @@ cd SDM-LC
 docker build .
 ```
 
+jika **error** jalankan container satu persatu.
+
+```bash
+docker-compose build db
+docker-compose build backend-dev
+docker-compose build app-dev
+docker-compose build backend-prod
+docker-compose build app-prod
+```
+
 ### 4. Jalankan Aplikasi dengan Docker Compose
+
+-   Development
 
 ```bash
 docker-compose up app-dev
 ```
 
-### 5. Di terminal yang berbeda, masuk ke Container Backend
+-   Production
 
 ```bash
-docker exec -it backend-dev /bin/sh
+docker-compose up app-prod
 ```
 
-### 6. Reset Database
+### 5. Buka Terminal Baru lalu, masuk ke Container Backend
+
+-   backend-dev atau backend-prod
+
+```bash
+docker exec -it <container_id> sh
+```
+
+### 6. Reset Database/Seeding Data Admin (Wajib) dan unit Testing Api (Opsional)
+
+setelah masuk ke container backend
+
+-   Seeding Data Admin
 
 ```bash
 npm run refresh:db
+```
+
+-   Unit Testing
+
+route user :
+
+```bash
+npm run test user
+```
+
+route cuti/leave request :
+
+```bash
+npm run test leaveRequest
 ```
 
 ### 7. Akses Aplikasi
 
 Buka browser Anda dan akses aplikasi melalui URL:
 
+-   Development
+
 ```bash
 http://localhost:3000
+```
+
+-   Production
+
+```bash
+http://localhost:8000
 ```
 
 ## Teknologi yang Digunakan
