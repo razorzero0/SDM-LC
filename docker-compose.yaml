@@ -1,0 +1,75 @@
+services:
+    backend-dev:
+        build:
+            context: ./backend
+            dockerfile: /Dockerfile.backend
+            target: dev
+        volumes:
+            - ./backend:/app
+        ports:
+            - "4000:4000"
+        environment:
+            - NODE_ENV=production
+            - MONGO_URI=mongodb://db:27017/mern
+            - PORT=4000
+            - FRONTEND_URI="http://localhost:3000"
+            - JWT_SECRET=9206ab437c972d2f1f67b212395e59bb516f7c71aabfc0343a53293ad47d3461
+        depends_on:
+            - db
+
+    backend-prod:
+        build:
+            context: ./backend
+            dockerfile: /Dockerfile.backend
+            target: prod
+
+        ports:
+            - "8080:4000"
+        environment:
+            - NODE_ENV=production
+            - MONGO_URI=mongodb://db:27017/mern
+            - PORT=4000
+            - FRONTEND_URI="http://localhost:8000"
+            - JWT_SECRET=9206ab437c972d2f1f67b212395e59bb516f7c71aabfc0343a53293ad47d3461
+        depends_on:
+            - db
+
+    app-dev:
+        build:
+            context: ./frontend
+            dockerfile: /Dockerfile.frontend
+            target: dev
+        volumes:
+            - ./frontend:/app
+            - /app/node_modules
+        ports:
+            - "3000:3000"
+        environment:
+            - NODE_ENV=production
+            - VITE_API_URL=http://localhost:4000
+
+        depends_on:
+            - backend-dev
+    app-prod:
+        build:
+            context: ./frontend
+            dockerfile: /Dockerfile.frontend
+            target: prod
+        ports:
+            - "8000:80"
+        environment:
+            - NODE_ENV=production
+            - VITE_API_URL=http://localhost:8080
+
+        depends_on:
+            - backend-dev
+
+    db:
+        image: mongo:latest
+        ports:
+            - "27017:27017"
+        volumes:
+            - mern_db:/data/db
+
+volumes:
+    mern_db:
