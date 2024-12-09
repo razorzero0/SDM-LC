@@ -9,7 +9,7 @@ services:
         ports:
             - "4000:4000"
         environment:
-            - NODE_ENV=production
+            - NODE_ENV=development
             - MONGO_URI=mongodb://db:27017/mern_dev
             - PORT=4000
             - FRONTEND_URI=http://localhost:3000
