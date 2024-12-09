@@ -41,7 +41,7 @@ export default function DataEmployee({ token }) {
     const getAllRequest = async () => {
         try {
             // Mengambil data dari API dengan token otentikasi
-            const response = await axios.get("http://localhost:4000/api/user/all", {
+            const response = await axios.get(baseUrl + "/api/user/all", {
                 headers: {
                     Authorization: `Bearer ${token}`, // Menambahkan token Bearer untuk otorisasi
                 },
