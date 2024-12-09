@@ -33,7 +33,7 @@ app.use("/api/request", leaveRequestRouter); // Rute untuk operasi terkait permi
 // Perbaikan route root
 app.get("/", (req, res) => {
     // Perbaikan pada parameter callback function
-    res.send("Hello World!");
+    res.send("Hello Worlds!");
 });
 
 // Mengekspor aplikasi Express untuk digunakan di file lain (misalnya untuk server)

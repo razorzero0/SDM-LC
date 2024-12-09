@@ -31,18 +31,42 @@ git clone https://github.com/razorzero0/SDM-LC.git
 cd SDM-LC
 ```
 
-### 3. Bangun Docker Image
+jika ingin melakukan **development** disarankan menginstall dependensi
 
 ```bash
-docker build .
+#backend
+cd SDM-LC/backend
+npm install
+
+#frontend
+cd SDM-LC/frontend
+npm install
+```
+
+### 3. Bangun Docker Image
+
+-   Production
+
+```bash
+docker-compose build db backend-prod app-prod
+```
+
+-   Development
+
+```bash
+docker-compose build db backend-dev app-dev
 ```
 
 jika **error** jalankan container satu persatu.
 
 ```bash
 docker-compose build db
+
+#development
 docker-compose build backend-dev
 docker-compose build app-dev
+
+#production
 docker-compose build backend-prod
 docker-compose build app-prod
 ```
@@ -63,6 +87,11 @@ docker-compose up app-prod
 
 ### 5. Buka Terminal Baru lalu, masuk ke Container Backend
 
+-   cek container yang berjalan
+    ```bash
+    docker ps
+    ```
+    lalu masuk ke container backend sesuai id container
 -   backend-dev atau backend-prod
 
 ```bash
@@ -108,6 +137,8 @@ http://localhost:3000
 ```bash
 http://localhost:8000
 ```
+
+jika saat **development** belum bisa dibuka, tunggu sampai muncul **MongoDB connection Established.** di terminal.
 
 ## Teknologi yang Digunakan
 
