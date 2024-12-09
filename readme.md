@@ -138,7 +138,7 @@ http://localhost:3000
 http://localhost:8000
 ```
 
-jika saat **development** belum bisa dibuka, tunggu sampai muncul **MongoDB connection Established.** di terminal.
+jika saat request api/backend masih error, tunggu sampai muncul **MongoDB connection Established.** di terminal.
 
 ## Teknologi yang Digunakan
 
